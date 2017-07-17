@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Trivia Game</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- my css file -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+	<div id="mainContainer" class="container-fluid">
+		<div id="row1" class="row">
+			<div id="column1" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1">
+			<p id="name"></p>
+        <h1 id="title" class="text-center">Animal Trivia</h1>
+        <br>
+        <p id="instructions">Instructions: You will have 30 seconds to answer five questions. When the time is up, you will see your score. Press the button to begin.</p>
+        <button id="startButton" type="button" class="btn btn-primary center-block">Start Quiz</button>
+        <div id="timerDiv" class="text-center"></div>
+      <div id="allQuestions">
+        <div id="question1Div" class="row">
+        <h2 id="question1"></h2>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion1" class="answerToQuestion1 pull-left" value='false'>
+              <span class="answerText" id="answer1a"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion1" class="answerToQuestion1 pull-left" value="true">
+              <span class="answerText" id="answer1b"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion1" aria-label="..." class="answerToQuestion1 pull-left" value="false">
+              <span class="answerText" id="answer1c"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion1" aria-label="..." class="answerToQuestion1 pull-left" value="false">
+              <span class="answerText" id="answer1d"></span>
+          </span>
+      </div>
+      </div>
+      <div id="question2Div" class="row">
+        <h2 id="question2"></h2>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion2" aria-label="..." class="answerToQuestion2 pull-left" value='true'>
+              <span class="answerText" id="answer2a"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion2" aria-label="..." class="answerToQuestion2 pull-left" value="false">
+              <span class="answerText" id="answer2b"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion2" aria-label="..." class="answerToQuestion2 pull-left" value="false">
+              <span class="answerText" id="answer2c"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion2" aria-label="..." class="answerToQuestion2 pull-left" value="false">
+              <span class="answerText" id="answer2d"></span>
+          </span>
+      </div>
+      </div>
+      <div id="question3Div" class="row">
+        <h2 id="question3"></h2>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion3" aria-label="..." class="answerToQuestion3 pull-left" value='false'>
+              <span class="answerText" id="answer3a"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion3" aria-label="..." class="answerToQuestion3 pull-left" value="false">
+              <span class="answerText" id="answer3b"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion3" aria-label="..." class="answerToQuestion3 pull-left" value="false">
+              <span class="answerText" id="answer3c"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion3" aria-label="..." class="answerToQuestion3 pull-left" value="true">
+              <span class="answerText" id="answer3d"></span>
+          </span>
+      </div>
+      </div>
+      <div id="question4Div" class="row">
+        <h2 id="question4"></h2>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion4" aria-label="..." class="answerToQuestion4 pull-left" value='false'>
+              <span class="answerText" id="answer4a"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion4" aria-label="..." class="answerToQuestion4 pull-left" value="false">
+              <span class="answerText" id="answer4b"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion4" aria-label="..." class="answerToQuestion4 pull-left" value="true">
+              <span class="answerText" id="answer4c"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion4" aria-label="..." class="answerToQuestion4 pull-left" value="false">
+              <span class="answerText" id="answer4d"></span>
+          </span>
+      </div>
+      </div>
+      <div id="question5Div" class="row">
+        <h2 id="question5"></h2>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion5" aria-label="..." class="answerToQuestion5 pull-left" value='false'>
+              <span class="answerText" id="answer5a"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion5" aria-label="..." class="answerToQuestion5 pull-left" value="true">
+              <span class="answerText" id="answer5b"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion5" aria-label="..." class="answerToQuestion5 pull-left" value="false">
+              <span class="answerText" id="answer5c"></span>
+          </span>
+          <span class="input-group-addon">
+            <input type="radio" name="rquestion5" aria-label="..." class="answerToQuestion5 pull-left" value="false">
+              <span class="answerText" id="answer5d"></span>
+          </span>
+      </div>
+      </div>
+      </div>
+      <br>
+      <div id="numberCorrect"></div>
+      <div id="numberIncorrect" ></div>
+      <div id="numberUnanswered"></div>
+    </div>
+
+			</div>
+		</div>
+	</div>
+
+<script src="assets/javascript/app.js"></script>
+<body>
+</html>
