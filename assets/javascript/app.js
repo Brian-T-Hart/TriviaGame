@@ -2,7 +2,12 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
 var currentTime = 31;
+var radioValue = [];
 var x = 0;
+var i = 0;
+var j = 0;
+var z = 0;
+var intervalTimer;
 
 var question1 = {
   question: 'What is the collective name for a group of lions?',
@@ -79,22 +84,9 @@ var question5 = {
   }
 };
 
-function getAnswer() {
-  x = this.value;
-  console.log(x);
-      if (x === 'true') {
-        correctAnswers++;
-        console.log('correctanswers = ' + correctAnswers);
-      }
-      if (x === 'false') {
-        wrongAnswers++;
-        console.log('wrongAnswers = ' + wrongAnswers);
-      }
-}
-
 function startTimer() {
   $('#timerDiv').html('<h2>' + currentTime + ' seconds</h2>');
-  setInterval(countDown, 1000);
+  intervalTimer = setInterval(countDown, 1000);
   $("#allQuestions").show();
   $('#startButton').hide();
   question1.lions();
@@ -105,26 +97,48 @@ function startTimer() {
   countDown();
 }
 
-function countDown() {
-  if (currentTime > 0){
-    currentTime--;
-  }
-  else {
-    currentTime = 0;
-    x = correctAnswers + wrongAnswers;
-    unanswered = 5 - x;
-    console.log(unanswered);
-    $('#numberCorrect').html('<h2>Correct Answers: ' + correctAnswers + '</h2>');
-    $('#numberIncorrect').html('<h2>Wrong Answers: ' + wrongAnswers + '</h2>');
-    $('#numberUnanswered').html('<h2>Unanswered: ' + unanswered + '</h2>');
-  }
-  $('#timerDiv').html('<h2>' + currentTime + ' seconds</h2>');
+function restartQuiz() {
+  $('#restartButton').show();
 }
 
+function reload() {
+  location.reload();
+}
+
+function countDown() {
+    if (currentTime > 0){
+      currentTime--;
+      $('#timerDiv').html('<h2>' + currentTime + ' seconds</h2>');
+    }
+    else {
+      currentTime = 0;
+      clearInterval(intervalTimer);
+      $('#timerDiv').html('<h2>Times Up!</h2>'); 
+      for (var i = 1; i < 6; i++) {
+        radioValue[i] = $("input[name='rquestion" + i + "']:checked").val();
+        if (radioValue[i] === "true"){
+          correctAnswers++;
+          console.log("the checked answer is right; " + radioValue[i]);
+        }
+        if (radioValue[i] === "false") {
+          wrongAnswers++;
+          console.log("the checked answer is wrong; " + radioValue[i]);
+        }
+        else {
+          x = correctAnswers + wrongAnswers;
+          unanswered = 5 - x;
+          console.log(unanswered);
+        }
+      }
+  
+  $('#numberCorrect').html('<h2>Correct Answers: ' + correctAnswers + '</h2>');
+  $('#numberIncorrect').html('<h2>Wrong Answers: ' + wrongAnswers + '</h2>');
+  $('#numberUnanswered').html('<h2>Unanswered: ' + unanswered + '</h2>');
+  restartQuiz();
+  }
+}
+
+$('#restartButton').hide();
 $("#allQuestions").hide();
 $('#startButton').click(startTimer);
-$('.answerToQuestion1').click(getAnswer);
-$('.answerToQuestion2').click(getAnswer);
-$('.answerToQuestion3').click(getAnswer);
-$('.answerToQuestion4').click(getAnswer);
-$('.answerToQuestion5').click(getAnswer);
+$('#restartButton').click(reload);
